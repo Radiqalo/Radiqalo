@@ -3,7 +3,7 @@
 ## 🚀 About Me
 - 🎓 Student at USTB (University of Science and Technology Beijing)
 
-#THE CONTENT BELOW IS UNDER CONSTRUCTION
+# SORRY! THE CONTENT BELOW IS UNDER CONSTRUCTION
 
 ## 📧 Contact Me
 -QQ
