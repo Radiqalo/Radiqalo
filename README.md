@@ -2,6 +2,10 @@
 
 ## 🚀 About Me
 - 🎓 Student at USTB (University of Science and Technology Beijing)
+- 💻 Using Mechanical Revolution Yaoye 16u with Arch Linux
+
+## 📚 My Guides
+- [Arch Linux 电源优化指南 - 机械革命耀世16u](arch-linux-power-optimization.md) - 降低Arch Linux笔记本电池功耗的完整指南
 
 # 🚧SORRY! THE CONTENT BELOW IS UNDER CONSTRUCTION🚧
 
