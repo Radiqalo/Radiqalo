@@ -456,14 +456,14 @@ s-tui
 
 ### 如果某些设备不工作
 
-某些设备（如USB鼠标、外置硬盘）可能因激进的电源管理而出现问题，将它们添加到黑名单：
+某些设备（如USB鼠标、外置硬盘）可能因激进的电源管理而出现问题，将它们添加到排除列表：
 
 ```bash
 # 编辑TLP配置
 sudo nano /etc/tlp.conf
 
-# 找到USB_BLACKLIST并添加设备ID
-# 使用lsusb查找设备ID
+# 找到USB_DENYLIST并添加设备ID（使用lsusb查找）
+# 格式：USB_DENYLIST="1234:5678 5678:9abc"
 ```
 
 ## 参考资源
