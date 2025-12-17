@@ -291,11 +291,14 @@ sudo systemctl enable wifi-powersave.service
 ### 蓝牙省电
 
 ```bash
-# 电池模式下禁用蓝牙（如不使用）
+# 如果不经常使用蓝牙，可以完全禁用以节省电力
 sudo systemctl stop bluetooth.service
 sudo systemctl disable bluetooth.service
 
-# 或通过TLP配置自动管理
+# TLP可以自动管理蓝牙（推荐方式）
+# 在/etc/tlp.conf中配置：
+# DEVICES_TO_DISABLE_ON_BAT_NOT_IN_USE="bluetooth"
+# 这会在电池模式下不使用时自动禁用蓝牙
 ```
 
 ## 其他优化建议
@@ -459,12 +462,28 @@ s-tui
 某些设备（如USB鼠标、外置硬盘）可能因激进的电源管理而出现问题，将它们添加到排除列表：
 
 ```bash
+# 首先，使用lsusb找出问题设备的ID
+lsusb
+# 示例输出：
+# Bus 001 Device 003: ID 046d:c52b Logitech, Inc. Unifying Receiver
+# 设备ID格式为：046d:c52b (供应商ID:产品ID)
+
 # 编辑TLP配置
 sudo nano /etc/tlp.conf
 
-# 找到USB_DENYLIST并添加设备ID（使用lsusb查找）
-# 格式：USB_DENYLIST="1234:5678 5678:9abc"
+# 找到USB_DENYLIST并添加设备ID
+# 单个设备：USB_DENYLIST="046d:c52b"
+# 多个设备（空格分隔）：USB_DENYLIST="046d:c52b 0781:5583"
+
+# 重启TLP以应用更改
+sudo tlp start
 ```
+
+**常见需要排除的设备：**
+- 无线鼠标/键盘接收器
+- 外置硬盘（如果频繁断开）
+- 某些USB hub
+- 打印机
 
 ## 参考资源
 

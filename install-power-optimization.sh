@@ -56,7 +56,11 @@ echo "=========================================="
 echo "步骤 3/5: 禁用冲突的服务"
 echo "=========================================="
 echo "禁用 systemd-rfkill 服务以避免与TLP冲突..."
-sudo systemctl mask systemd-rfkill.service systemd-rfkill.socket 2>/dev/null || true
+if sudo systemctl mask systemd-rfkill.service systemd-rfkill.socket 2>&1 | grep -q "Created symlink"; then
+    echo -e "${GREEN}成功禁用systemd-rfkill服务${NC}"
+else
+    echo -e "${YELLOW}systemd-rfkill服务可能已被禁用或不存在${NC}"
+fi
 
 echo ""
 echo "=========================================="
